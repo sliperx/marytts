@@ -8,5 +8,4 @@ FROM openjdk:19-jdk
 RUN microdnf install -y findutils && microdnf clean all
 WORKDIR /app
 COPY --from=builder /app/ /app/
-EXPOSE 5920
-ENTRYPOINT ["./gradlew", "run"]
+ENTRYPOINT ["./gradlew", "run", "-Dsocket.port=59125", "-Dsocket.addr=0.0.0.0", "--info"]
